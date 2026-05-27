@@ -1,28 +1,28 @@
 {
-  "name": "Email Writer Assistant",
-  "description": "AI-powered email reply generator",
-  "version": "1.0",
-  "manifest_version": 3,
-  "permissions": ["activeTab", "storage"],
-  "host_permissions": [
-    "https://mail.google.com/*",
-    "https://emailbackend-65cr.onrender.com/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["https://mail.google.com/*"],
-      "js": ["content.js"],
-      "css": ["content.css"],
-      "run_at": "document_idle"
+    "name": "Email Writer Assistant",
+    "description": "AI-powered email reply generator with automatic PDF extraction",
+    "version": "1.3",
+    "manifest_version": 3,
+    "permissions": ["activeTab", "storage", "downloads"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+        "http://localhost:8080/*",
+        "https://email-extension-backend.onrender.com",
+        "https://*.onrender.com/*",
+        "*://mail.google.com/*",
+        "*://*.googleusercontent.com/*"
+    ],
+    "content_scripts": [
+        {
+            "js": ["content.js"],
+            "matches": ["*://mail.google.com/*"],
+            "css": ["content.css"],
+            "run_at": "document_end"
+        }
+    ],
+    "action": {
+        "default_title": "Email Writer Assistant"
     }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": ["icons/*"],
-      "matches": ["https://mail.google.com/*"]
-    }
-  ],
-  "action": {
-    "default_title": "Email Writer Assistant"
-  }
 }

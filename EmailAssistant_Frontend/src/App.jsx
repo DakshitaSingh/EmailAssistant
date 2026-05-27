@@ -24,12 +24,12 @@ function App() {
   const [generatedReply, setGeneratedReply] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
+//prev->https://emailbackend-65cr.onrender.com/api/email/generate
   const handleSubmit = async () => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('https://emailbackend-65cr.onrender.com/api/email/generate', {
+      const response = await axios.post('https://email-extension-backend.onrender.com', {
         emailContent,
         tone,
       });
