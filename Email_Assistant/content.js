@@ -109,10 +109,10 @@ function injectButton() {
 
             button.innerHTML = 'Generating...';
             
-            const response = await fetch('https://email-extension-backend.onrender.com', {
-                method: 'POST',
-                body: formData
-            });
+           const response = await fetch('https://email-extension-backend.onrender.com/api/email/generate', {
+    method: 'POST',
+    body: formData
+});
 
             if (!response.ok) throw new Error('API Execution Failed');
 

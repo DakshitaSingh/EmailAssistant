@@ -29,7 +29,7 @@ function App() {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('https://email-extension-backend.onrender.com', {
+      const response = await axios.post('https://email-extension-backend.onrender.com/api/email/generate', {
         emailContent,
         tone,
       });
