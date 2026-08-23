@@ -22,6 +22,7 @@ HELP.md
 .env.local
 *.properties.local
 *.env.production
+src/main/resources/application.properties
 
 # =========================================================================
 # IntelliJ IDEA IDE
