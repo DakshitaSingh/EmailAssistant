@@ -1,33 +1,74 @@
-HELP.md
+# =========================================================================
+# Spring Boot Core & Build Targets
+# =========================================================================
 target/
+build/
+bin/
+out/
+HELP.md
 .mvn/wrapper/maven-wrapper.jar
+
+# Prevent deep target or build tracking overrides
 !**/src/main/**/target/
 !**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-### STS ###
+# =========================================================================
+# Environment Secrets & Local Runtime Properties
+# =========================================================================
+# Blocks local database setups, runtime properties, and environmental keys
+.env
+.env.local
+*.properties.local
+*.env.production
+
+# =========================================================================
+# IntelliJ IDEA IDE
+# =========================================================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# =========================================================================
+# VS Code IDE
+# =========================================================================
+.vscode/
+*.code-workspace
+.history/
+
+# =========================================================================
+# Eclipse / Spring Tool Suite (STS)
+# =========================================================================
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
+# =========================================================================
+# NetBeans IDE
+# =========================================================================
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+# =========================================================================
+# Operating System Garbage Files
+# =========================================================================
+# Mac OS administrative files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows thumbnail and indexing caches
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
