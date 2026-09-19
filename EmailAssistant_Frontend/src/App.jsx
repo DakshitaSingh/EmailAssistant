@@ -24,23 +24,28 @@ function App() {
   const [generatedReply, setGeneratedReply] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-//prev->https://emailbackend-65cr.onrender.com/api/email/generate
-  const handleSubmit = async () => {
-    setLoading(true);
-    setError('');
-    try {
-      const response = await axios.post('https://email-extension-backend.onrender.com/api/email/generate', {
-        emailContent,
-        tone,
-      });
-      setGeneratedReply(typeof response.data === 'string' ? response.data : JSON.stringify(response.data));
-    } catch (error) {
-      setError('Failed to generate email reply. Please try again');
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+//prev->https://email-extension-backend.onrender.com/api/email/generate
+const handleSubmit = async () => {
+  setLoading(true);
+  setError('');
+  try {
+    const formData = new FormData();
+    formData.append('emailContent', emailContent);
+    formData.append('tone', tone);
+
+    const response = await axios.post(
+      'https://email-extension-backend.onrender.com/api/email/generate',
+      formData
+    );
+
+    setGeneratedReply(typeof response.data === 'string' ? response.data : JSON.stringify(response.data));
+  } catch (error) {
+    setError('Failed to generate email reply. Please try again');
+    console.error(error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const usageCards = [
     { title: '⚡ Save Time', desc: 'No more overthinking replies. Generate them instantly.' },
